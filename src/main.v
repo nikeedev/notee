@@ -30,15 +30,16 @@ fn event(e &tui.Event, x voidptr) {
 
 fn frame(x voidptr) {
     mut app := &App(x)
-	mut text :=
+	mut text := ""
+
     app.tui.clear()
     app.tui.draw_text(0, 0, '---- notee ----')
 
 	if appcfg.editor_mode {
-		term.input()
+		text = os.get_line()
 	    app.tui.set_cursor_position(0, 0)
     }
-    
+	app.tui.draw_text(1, 0, text)
     app.tui.reset()
     app.tui.flush()
 }
