@@ -23,7 +23,7 @@ fn event(e &tui.Event, x voidptr) {
 	if e.typ == .key_down && e.code == .i && !appcfg.editor_mode  {
         appcfg.editor_mode = true
     }
-    if e.typ == .key_down && e.code == .escape && !appcfg.editor_mode  {
+    if e.typ == .key_down && e.code == .escape && !appcfg.editor_mode {
         appcfg.editor_mode = true
     }
 }
@@ -37,7 +37,8 @@ fn frame(x voidptr) {
 	if appcfg.editor_mode {
 		term.input()
 	    app.tui.set_cursor_position(0, 0)
-
+    }
+    
     app.tui.reset()
     app.tui.flush()
 }
